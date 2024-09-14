@@ -1,1 +1,1 @@
-This is python learning notes for Kenzo >.<
+This are python learning notes for Kenzo >.<
