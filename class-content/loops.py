@@ -12,18 +12,56 @@
 
 # A `for` loop is used to iterate over a sequence (list, tuple, string, or range of numbers).
 
+"""
+list
+
+what does it look like?
+[something]
+[item1,item2,item3]
+
+what are items?
+items can be anything
+item can be an integer --> 1 or -556
+item can also be boolean --> True, False
+float and string can also be item --> 4.08 , "this is a string"
+
+code:
+lst = ["a","b","c"]
+
+index:
+Index is the order of the item inside the list
+list     ["a","b","c","d","e"]
+index      0 , 1 , 2 , 3 , 4
+
+
+"""
+# # code:
+# lst = ["a","b","c","d","e"]
+# print(lst[2:4])
+
+"""
+for loops
+what it looks like
+
+for -->key word
+in  -->key word
+
+for item in lst:
+    print(item)
+"""
 # Example 1: Loop through a list
 fruits = ["apple", "banana", "cherry"]
+
 for fruit in fruits:
     print(fruit)
 
 # Example 2: Loop through a range of numbers
-for i in range(5):
+for i in range(3):
     print(i)  # prints numbers 0 to 4
 
 # Looping through strings
-for letter in "hello":
-    print(letter)
+for alphabet in "hello":
+    print(alphabet)
 
 # Nested `for` loop
 for i in range(3):
