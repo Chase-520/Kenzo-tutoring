@@ -36,8 +36,8 @@ index      0 , 1 , 2 , 3 , 4
 
 """
 # # code:
-# lst = ["a","b","c","d","e"]
-# print(lst[2:4])
+lst = ["a","b","c","d","e"]
+print(lst[2:4])
 
 """
 for loops
