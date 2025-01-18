@@ -36,6 +36,26 @@ def drawTriangle(x,y,size,r,g,b):
         t.right(120)
     t.end_fill()
 
+def drawCircle(x,y,size,r,g,b):
+    t.penup()
+    t.goto(x, y)
+    t.pendown()
+    t.fillcolor(r, g, b)
+    t.begin_fill()
+    t.circle(size)
+    t.end_fill()
+
+
+def drawLine(x1,y1,x2,y2,r,g,b):
+    t.penup()
+    t.goto(x1,y1)
+    t.pendown()
+    t.pencolor(r,g,b)
+    t.goto(x2,y2)
+
+
+
+
 
 #drawTriangle(100,26,100)
 """
@@ -48,22 +68,41 @@ print(f"the random number is {a}")
 for i in range(50):
     loc_x = random.randint(0,500)
     loc_y = random.randint(0,500)
-    drawSquare(x=loc_x,y=loc_y,size=50,r=random.randint(0,255),g=random.randint(0,255),b=random.randint(0,255))
+    drawSquare(x=loc_x,y=loc_y,size=random.randint(20,50),r=random.randint(0,255),g=random.randint(0,255),b=random.randint(0,255))
 
 for i in range(100):
     loc_x = random.randint(0,500)
     loc_y = random.randint(-500,0)
-    drawTriangle(x=loc_x,y=loc_y,size=50,r=random.randint(0,255),g=random.randint(0,255),b=random.randint(0,255))
+    drawTriangle(x=loc_x,y=loc_y,size=random.randint(20,50),r=random.randint(0,255),g=random.randint(0,255),b=random.randint(0,255))
 
-t.penup()
-t.goto(0,0)
-t.pendown()
-t.circle(50)
+for i in range(50):
+    loc_x = random.randint(-500, 0)
+    loc_y = random.randint(0, 500)
+    size = random.randint(10,50)
+    red = random.randint(0,255)
+    green = random.randint(0, 255)
+    blue = random.randint(0, 255)
+    drawCircle(x=loc_x,y=loc_y,size=size,r=red,g=green,b=blue)
 
-t.penup()
-t.goto(-100,100)
-t.pendown()
-t.goto(0,0)
+for i in range(100):
+    drawLine(x1=random.randint(-500,0),y1=random.randint(-500,0),x2=random.randint(-500,0),y2=random.randint(-500,0),r=random.randint(0,255),g=random.randint(0,255),b=random.randint(0,255))
+
+red = 0
+green = 0
+blue = 255
+
+start_x = -500
+start_y = -500
+
+end_x = -500
+end_y = 500
+
+for i in range(100):
+    drawLine(start_x,start_y,end_x,end_y,red,green,blue)
+    start_y +=10
+    end_x += 10
+
+
 
 # This is the end of the drawing lab
 turtle.update()
