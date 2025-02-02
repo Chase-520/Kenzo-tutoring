@@ -91,16 +91,20 @@ red = 0
 green = 0
 blue = 255
 
-start_x = -500
-start_y = -500
+start_x = 400
+start_y = 0
 
-end_x = -500
-end_y = 500
+end_x = 400
+end_y = -300
 
+
+# The default x dimension is 400
 for i in range(100):
     drawLine(start_x,start_y,end_x,end_y,red,green,blue)
-    start_y +=10
-    end_x += 10
+    start_y -=10
+    end_x -= 10
+
+
 
 
 
