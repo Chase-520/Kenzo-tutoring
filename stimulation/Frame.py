@@ -1,57 +1,45 @@
 import pygame
 import random
-
+from Object import Ball
 # Initialize pygame
 pygame.init()
 
 # Set up display
 WIDTH, HEIGHT = 800, 600
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+display = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Bouncing Ball Simulation")
+class Game:
+    def __init__(self):
+        self.frame_rate = 60
+        self.ball = Ball()  # Create a Ball instance
 
-# Define ball properties
-ball_radius = 20
-ball_x = random.randint(ball_radius, WIDTH - ball_radius)
-ball_y = random.randint(ball_radius, HEIGHT - ball_radius)
-ball_dx = 5  # Change in x direction
-ball_dy = 5  # Change in y direction
-ball_color = (255, 0, 0)
+    def run(self):
+        running = True
+        clock = pygame.time.Clock()  # Control frame rate
 
-# Clock to control frame rate
-clock = pygame.time.Clock()
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.KEYDOWN:
+                    print(f"Key: {pygame.key.name(event.key)}, Code: {event.key}")
+                    print(f"Key {pygame.key.name(event.key)} pressed")
+                elif event.type == pygame.KEYUP:
+                    print(f"Key {pygame.key.name(event.key)} released")
 
-# Game loop
-running = True
+            display.fill((0, 0, 0))  # Clear display with black background
 
-"""
-Our most important part starts here!!!
-"""
-while running:
-    screen.fill((0, 0, 0))  # Clear screen with black background
+            self.ball.paint()  # Call the paint() method of the ball instance
 
-    # Event handling
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+            pygame.display.flip()  # Update display
+            clock.tick(self.frame_rate)  # Control frame rate
 
-    # Update ball position
-    ball_x += ball_dx
-    ball_y += ball_dy
 
-    # Collision detection with walls
-    if ball_x - ball_radius <= 0 or ball_x + ball_radius >= WIDTH:
-        ball_dx = -ball_dx
-    if ball_y - ball_radius <= 0 or ball_y + ball_radius >= HEIGHT:
-        ball_dy = -ball_dy
 
-    # Draw ball
-    pygame.draw.circle(screen, ball_color, (ball_x, ball_y), ball_radius)
 
-    # Update display
-    pygame.display.flip()
-
-    # Control frame rate
-    clock.tick(60)
+# Create and run the game
+my_game = Game()
+my_game.run()
 
 # Quit pygame
 pygame.quit()
