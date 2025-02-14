@@ -11,13 +11,14 @@ pygame.display.set_caption("Bouncing Ball Simulation")
 class Game:
     def __init__(self):
         self.frame_rate = 60
-        self.ball = Ball()  # Create a Ball instance
+        self.ball = Ball(r=10,x=400,y=300,vx=0,vy=0,color=(255,0,0))  # Create a Ball instance
 
     def run(self):
         running = True
         clock = pygame.time.Clock()  # Control frame rate
 
         while running:
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -29,7 +30,7 @@ class Game:
 
             display.fill((0, 0, 0))  # Clear display with black background
 
-            self.ball.paint()  # Call the paint() method of the ball instance
+            self.ball.paint(display=display)  # Call the paint() method of the ball instance
 
             pygame.display.flip()  # Update display
             clock.tick(self.frame_rate)  # Control frame rate
