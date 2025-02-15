@@ -10,13 +10,15 @@ class Ball:
         self.vy :int = vy  # Change in y direction
         self.color :tuple= color
 
-    def get_Vx(self):
+    def get_Vx(self) ->int: 
         return self.vx
     
     def paint(self, display: pygame.display): # screen is the pygame screen object
         # Update ball position
         self.x += self.vx
         self.y += self.vy
+
+        # TODO: add bouncing logic
 
 
         # Draw ball

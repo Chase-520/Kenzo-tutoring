@@ -1,6 +1,6 @@
 import pygame
 import random
-from Object import Ball
+from stimulation.Ball import Ball
 # Initialize pygame
 pygame.init()
 
@@ -27,6 +27,8 @@ class Game:
                     print(f"Key {pygame.key.name(event.key)} pressed")
                 elif event.type == pygame.KEYUP:
                     print(f"Key {pygame.key.name(event.key)} released")
+                    print("\n")
+                
 
             display.fill((0, 0, 0))  # Clear display with black background
 
