@@ -18,13 +18,27 @@ class Game:
         clock = pygame.time.Clock()  # Control frame rate
 
         while running:
-
+            """
+            key board interaction
+            """
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
                 elif event.type == pygame.KEYDOWN:
-                    print(f"Key: {pygame.key.name(event.key)}, Code: {event.key}")
-                    print(f"Key {pygame.key.name(event.key)} pressed")
+                    Key = str(pygame.key.name(event.key))
+                    print(f"Key: {Key}, Code: {event.key}")
+                    print(f"Key {Key} pressed")
+
+                    if(Key=="up"):
+                        self.ball.setVy(self.ball.getVy()-3)
+                    if(Key=="down"):
+                        self.ball.setVy(self.ball.getVy()+3)
+                    if (Key == "left"):
+                        self.ball.setVx(self.ball.getVx()-3)
+                    if (Key == "right"):
+                        self.ball.setVx(self.ball.getVx()+3)
+
+
                 elif event.type == pygame.KEYUP:
                     print(f"Key {pygame.key.name(event.key)} released")
                     print("\n")

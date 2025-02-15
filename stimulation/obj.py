@@ -5,7 +5,7 @@ class student:
         self.gender :str = g
         self.height :float = h
 
-    def getName(self):
+    def getName(self) ->str:
         return self.name
 
     def getGender(self):

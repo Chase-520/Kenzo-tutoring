@@ -8,17 +8,36 @@ class Ball:
         self.y :int= y
         self.vx :int= vx  # Change in x direction
         self.vy :int = vy  # Change in y direction
-        self.color :tuple= color
+        self.color :tuple= color # (r,g,b)
 
-    def get_Vx(self) ->int: 
+    def getRadius(self) ->int:
+        return self.radius
+    def setRadius(self, r:int):
+        self.radius = r
+    def getX(self) ->int:
+        return self.x
+    def setX(self, x:int):
+        self.x = x
+    def getVx(self) ->int:
         return self.vx
-    
+    def setVx(self, vx:int):
+        self.vx=vx
+    def getVy(self) ->int:
+        return self.vy
+    def setVy(self, vy:int):
+        self.vy = vy
+
     def paint(self, display: pygame.display): # screen is the pygame screen object
         # Update ball position
         self.x += self.vx
         self.y += self.vy
 
         # TODO: add bouncing logic
+        if(self.x>800 or self.x<0):
+            self.vx *= -1
+
+        if(self.y>600 or self.y<0):
+            self.vy = -self.vy
 
 
         # Draw ball
