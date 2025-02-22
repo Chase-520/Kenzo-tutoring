@@ -20,6 +20,8 @@ class Brick:
         self.y = yin
     def getWidth(self):
         return self.width
+    def getHeight(self):
+        return self.height
     def paint(self, display: pygame.display): # screen is the pygame screen object
         # Draw ball
         pygame.draw.rect(display, (0, 0, 255), (self.x, self.y, self.width, self.height))

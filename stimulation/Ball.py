@@ -44,6 +44,8 @@ class Ball:
         pygame.draw.circle(display, self.color, (self.x, self.y), self.radius)
 
     def checkCollision(self, brick):
-        if(self.getX()<brick.getX()+brick.getWidth()):
-            self.setVx(-self.getX())
+        if(self.getX()<brick.getX()+brick.getWidth() and (self.y>brick.getY() and self.y<brick.getY()+brick.getHeight())):
+            print(self.vx)
+            print(brick.x)
+            self.setVx(-self.getVx())
 
