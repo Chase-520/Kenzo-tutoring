@@ -1,18 +1,26 @@
 import pygame
 import random
+
 class Brick:
+    def __init__(self,xin:int,yin:int,w:int,h:int):
+        self.x :int= xin
+        self.y :int= yin
 
-    def __init__(self, x:int,y:int,w:int,h:int):
-        self.width : int = w
-        self.height :int = h
-        self.x :int = x
-        self.y :int= y
+        self.width  :int= w
+        self.height :int= h
 
+    def getX(self) ->int:
+        return self.x
 
+    def setX(self,xin:int):
+        self.x = xin
+    def getY(self):
+        return self.y
+    def setY(self, yin):
+        self.y = yin
+    def getWidth(self):
+        return self.width
     def paint(self, display: pygame.display): # screen is the pygame screen object
-        # Update ball position
-
-
         # Draw ball
         pygame.draw.rect(display, (0, 0, 255), (self.x, self.y, self.width, self.height))
 

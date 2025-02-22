@@ -2,6 +2,7 @@ import pygame
 import random
 from stimulation.Ball import Ball
 from stimulation.Brick import Brick
+
 # Initialize pygame
 pygame.init()
 
@@ -13,7 +14,9 @@ class Game:
     def __init__(self):
         self.frame_rate = 60
         self.ball = Ball(r=10,x=400,y=300,vx=0,vy=0,color=(255,0,0))  # Create a Ball instance
-        self.brick = Brick(x=100,y=300,w=20,h=50)
+
+        self.brick = Brick(xin=50,yin=300,w=30,h=100)
+
 
     def run(self):
         running = True
@@ -33,15 +36,23 @@ class Game:
 
                     if(Key=="up"):
                         # self.ball.setVy(self.ball.getVy()-3)
-                        self.brick.y -= 10
 
+                        cur_y = self.brick.getY()
+                        self.brick.setY(cur_y-13)
                     if(Key=="down"):
                         # self.ball.setVy(self.ball.getVy()+3)
-                        self.brick.y += 10
+                        cur_y = self.brick.getY()
+                        self.brick.setY(cur_y+13)
+
                     if (Key == "left"):
-                        self.ball.setVx(self.ball.getVx()-3)
+                        # self.ball.setVx(self.ball.getVx()-3)
+                        pass
                     if (Key == "right"):
-                        self.ball.setVx(self.ball.getVx()+3)
+                        # self.ball.setVx(self.ball.getVx()+3)
+                        pass
+                    if (Key == "space"):
+                        self.ball.setVx(random.randint(2,10))
+                        self.ball.setVy(random.randint(2,10))
 
 
                 elif event.type == pygame.KEYUP:
@@ -51,8 +62,13 @@ class Game:
 
             display.fill((0, 0, 0))  # Clear display with black background
 
-            self.ball.paint(display=display)  # Call the paint() method of the ball instance
+
+            self.ball.checkCollision(self.brick)
+
+            self.ball.paint(display=display,brick=self.brick)  # Call the paint() method of the ball instance
             self.brick.paint(display=display)
+
+
             pygame.display.flip()  # Update display
             clock.tick(self.frame_rate)  # Control frame rate
 

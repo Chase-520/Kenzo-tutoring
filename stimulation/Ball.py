@@ -27,12 +27,12 @@ class Ball:
     def setVy(self, vy:int):
         self.vy = vy
 
-    def paint(self, display: pygame.display): # screen is the pygame screen object
+    def paint(self, display: pygame.display, brick): # screen is the pygame screen object
         # Update ball position
         self.x += self.vx
         self.y += self.vy
 
-        # TODO: add bouncing logic
+        # bouncing logic
         if(self.x>800 or self.x<0):
             self.vx *= -1
 
@@ -42,4 +42,8 @@ class Ball:
 
         # Draw ball
         pygame.draw.circle(display, self.color, (self.x, self.y), self.radius)
+
+    def checkCollision(self, brick):
+        if(self.getX()<brick.getX()+brick.getWidth()):
+            self.setVx(-self.getX())
 
