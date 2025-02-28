@@ -2,8 +2,7 @@ import pygame
 import random
 
 import pygame.tests
-from stimulation.ball_brick.Ball import Ball
-from stimulation.ball_brick.Brick import Brick
+
 
 # Initialize pygame
 pygame.init()
@@ -22,12 +21,7 @@ font = pygame.font.Font(None, 50)  # None uses default font, 50 is size
 class Game:
     def __init__(self):
         self.frame_rate = 60
-        self.ball = Ball(r=10,x=400,y=300,vx=0,vy=0,color=(255,0,0))  # Create a Ball instance
 
-        self.brick = Brick(xin=50,yin=300,w=30,h=300)
-
-        self.scoreL = 0
-        self.scoreR = 0
 
 
     def run(self):
@@ -80,25 +74,6 @@ class Game:
                 
 
             display.fill((0, 0, 0))  # Clear display with black background
-
-
-            self.ball.checkCollision(self.brick)
-
-            self.ball.paint(display=display,brick=self.brick)  # Call the paint() method of the ball instance
-            self.brick.paint(display=display)
-
-            # TODO Score check
-            if(self.ball.getX()<10):
-                self.scoreR +=1
-            if(self.ball.getX()>789):
-                self.scoreL +=1
-
-            # TODO Display score
-            leftScore = font.render(f"scoreL: {self.scoreL}", True, (255, 255, 255))  # White text
-            display.blit(leftScore, (50, 50))  # Draw text at (100, 100)
-
-            rightScore = font.render(f"scoreR: {self.scoreR}", True, (255, 255, 255))  # White text
-            display.blit(rightScore, (650, 50))  # Draw text at (100, 100)
 
             pygame.display.flip()  # Update display
             clock.tick(self.frame_rate)  # Control frame rate
