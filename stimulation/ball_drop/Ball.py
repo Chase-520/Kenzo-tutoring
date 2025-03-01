@@ -2,7 +2,7 @@ import pygame
 import random
 
 class Ball:
-    def __init__(self, x, y, radius=10, color=(255, 0, 0)):
+    def __init__(self, x, y, radius=10, color=(random.randint(0,255), 0, 0)):
         self.x = x
         self.y = y
         self.vx = 0#random.randint(-5, 5)

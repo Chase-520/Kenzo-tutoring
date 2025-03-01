@@ -75,7 +75,7 @@ class Game:
                     print("\n")
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     print(f"Mouse clicked at {event.pos}")
-                    self.balls.append(Ball(x=event.pos[0],y=event.pos[1]))
+                    self.balls.append(Ball(x=event.pos[0],y=event.pos[1],radius=random.randint(5,15), color=(random.randint(0,255),random.randint(0,255),random.randint(0,255))))
 
                 
 
