@@ -82,6 +82,16 @@ class Game:
             display.fill((0, 0, 0))  # Clear display with black background
 
             for i in range(len(self.balls)-1):
+                """
+                [1,2,3,4,5]
+                1->2
+                1->3
+                1->4
+                ...
+                2->3
+                2->4
+                ...
+                """
                 self.balls[i].check_collision(self.balls[i+1])
 
             for ball in self.balls:

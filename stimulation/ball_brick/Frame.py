@@ -1,5 +1,6 @@
 import pygame
 import random
+import time
 
 import pygame.tests
 from stimulation.ball_brick.Ball import Ball
@@ -33,7 +34,7 @@ class Game:
     def run(self):
         running = True
         clock = pygame.time.Clock()  # Control frame rate
-
+        startTime = time.time()
         while running:
             """
             key board interaction
@@ -94,11 +95,16 @@ class Game:
                 self.scoreL +=1
 
             # TODO Display score
+            string = f"my score is {self.scoreL}"
+            print(string)
             leftScore = font.render(f"scoreL: {self.scoreL}", True, (255, 255, 255))  # White text
             display.blit(leftScore, (50, 50))  # Draw text at (100, 100)
 
             rightScore = font.render(f"scoreR: {self.scoreR}", True, (255, 255, 255))  # White text
-            display.blit(rightScore, (650, 50))  # Draw text at (100, 100)
+            display.blit(rightScore, (550, 50))  # Draw text at (100, 100)
+
+            timer = font.render(f"Time: {int(time.time()-startTime)}", True, (255, 255, 255))  # White text
+            display.blit(timer, (300, 400))
 
             pygame.display.flip()  # Update display
             clock.tick(self.frame_rate)  # Control frame rate
