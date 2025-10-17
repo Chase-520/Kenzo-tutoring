@@ -1,6 +1,6 @@
 import pygame
 import random
-from stimulation.ball_drop.Ball import Ball
+from Ball import Ball
 import pygame.tests
 
 
