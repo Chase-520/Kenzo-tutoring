@@ -12,11 +12,17 @@ class Ball:
         self.color = color
 
     def update(self, width, height):
+        # apply gravity
+
+        # Bouncing logic
+
+
         pass
 
 
 
     def check_collision(self, other):
+        
         pass
 
 
