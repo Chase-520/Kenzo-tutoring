@@ -21,10 +21,7 @@ font = pygame.font.Font(None, 50)  # None uses default font, 50 is size
 class Game:
     def __init__(self):
         self.frame_rate = 60
-
         self.balls = []
-
-
 
     def run(self):
         running = True
