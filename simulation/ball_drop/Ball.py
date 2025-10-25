@@ -27,10 +27,14 @@ class Ball:
 
 
     def check_collision(self, other):
-        
-        pass
+        dx = self.x - other.x
+        dy = self.y - other.y
+        distance = (dx ** 2 + dy ** 2) ** 0.5
 
-
+        if distance <= self.radius + other.radius:
+            # Simple elastic collision response
+            self.vx, other.vx = other.vx, self.vx
+            self.vy, other.vy = other.vy, self.vy
 
     def draw(self, display):
         self.update(800,600)
