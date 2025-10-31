@@ -45,7 +45,7 @@ class Ball:
 
     def checkCollision(self, brick):
         if(self.getX()<brick.getX()+brick.getWidth() and (self.y>brick.getY() and self.y<brick.getY()+brick.getHeight())):
-            print(self.vx)
-            print(brick.x)
+            # print(self.vx)
+            # print(brick.x)
             self.setVx(-self.getVx())
 

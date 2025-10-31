@@ -3,8 +3,8 @@ import random
 import time
 
 import pygame.tests
-from stimulation.ball_brick.Ball import Ball
-from stimulation.ball_brick.Brick import Brick
+from simulation.ball_brick.Ball import Ball
+from simulation.ball_brick.Brick import Brick
 
 # Initialize pygame
 pygame.init()
@@ -96,7 +96,7 @@ class Game:
 
             # TODO Display score
             string = f"my score is {self.scoreL}"
-            print(string)
+            # print(string)
             leftScore = font.render(f"scoreL: {self.scoreL}", True, (255, 255, 255))  # White text
             display.blit(leftScore, (50, 50))  # Draw text at (100, 100)
 
