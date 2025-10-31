@@ -39,45 +39,26 @@ class Game:
             """
             key board interaction
             """
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-                elif event.type == pygame.KEYDOWN:
-                    Key = str(pygame.key.name(event.key))
-                    print(f"Key: {Key}, Code: {event.key}")
-                    print(f"Key {Key} pressed")
-
-                elif event.type == pygame.KEYUP:
-                    Key = str(pygame.key.name(event.key))
-                    print(f"Key {Key} released")
-                    print("\n")
             # Handle continuous key press using get_pressed()
             keys = pygame.key.get_pressed()
 
             if keys[pygame.K_UP]:
-                # Move brick up
-                cur_y = self.brick.getY()
-                self.brick.setY(cur_y - 13)
-
+                # TODO Move brick up
+                pass
             if keys[pygame.K_DOWN]:
-                # Move brick down
-                cur_y = self.brick.getY()
-                self.brick.setY(cur_y + 13)
+                # TODO Move brick down
+                pass
 
             if keys[pygame.K_LEFT]:
-                # Move brick left (you can add logic for left movement if needed)
-                cur_x = self.brick.getX()
-                self.brick.setX(cur_x - 13)  # Example: move 13 pixels left
+                # TODO Move brick left (you can add logic for left movement if needed)
+                pass
 
             if keys[pygame.K_RIGHT]:
-                # Move brick right (you can add logic for right movement if needed)
-                cur_x = self.brick.getX()
-                self.brick.setX(cur_x + 13)  # Example: move 13 pixels right
-
+                # TODO Move brick right (you can add logic for right movement if needed)
+                pass
             if keys[pygame.K_SPACE]:
-                # Set random velocity for the ball when space is pressed
-                self.ball.setVx(random.randint(2, 30))
-                self.ball.setVy(random.randint(2, 30))
+                # TODO Set random velocity for the ball when space is pressed
+                pass
                 
 
             display.fill((0, 0, 0))  # Clear display with black background
@@ -89,10 +70,7 @@ class Game:
             self.brick.paint(display=display)
 
             # TODO Score check
-            if(self.ball.getX()<10):
-                self.scoreR +=1
-            if(self.ball.getX()>789):
-                self.scoreL +=1
+            
 
             # TODO Display score
             string = f"my score is {self.scoreL}"
