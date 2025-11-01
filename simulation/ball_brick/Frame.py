@@ -55,20 +55,22 @@ class Game:
             keys = pygame.key.get_pressed()
 
             if keys[pygame.K_UP]:
-                self.brick.setY(self.brick.getY() + 20)
+                self.brick.setY(self.brick.getY() + -20)
                 pass
             if keys[pygame.K_DOWN]:
+                self.brick.setY(self.brick.getY() + 20)
                 pass
 
             if keys[pygame.K_LEFT]:
-                # TODO Move brick left (you can add logic for left movement if needed)
+                self.brick.setX(self.brick.getX() + -20)
                 pass
 
             if keys[pygame.K_RIGHT]:
-                # TODO Move brick right (you can add logic for right movement if needed)
+                self.brick.setX(self.brick.getX() + 20)
                 pass
             if keys[pygame.K_SPACE]:
-                # TODO Set random velocity for the ball when space is pressed
+                self.ball.setVx(random.randint(-10,10))
+                self.ball.setVy(random.randint(-10,10))
                 pass
                 
 
@@ -80,8 +82,11 @@ class Game:
             self.ball.paint(display=display,brick=self.brick)  # Call the paint() method of the ball instance
             self.brick.paint(display=display)
 
-            # TODO Score check
-            
+            if self.ball.getX() <= 2:
+                self.scoreL += 1
+            if self.ball.getX() >= 798:
+                self.scoreR += 1
+
 
             # TODO Display score
             string = f"my score is {self.scoreL}"
