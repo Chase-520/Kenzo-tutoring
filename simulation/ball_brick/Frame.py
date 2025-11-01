@@ -39,7 +39,19 @@ class Game:
             """
             key board interaction
             """
-            # Handle continuous key press using get_pressed()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.KEYDOWN:
+                    Key = str(pygame.key.name(event.key))
+                    print(f"Key: {Key}, Code: {event.key}")
+                    print(f"Key {Key} pressed")
+
+                elif event.type == pygame.KEYUP:
+                    Key = str(pygame.key.name(event.key))
+                    print(f"Key {Key} released")
+                    print("\n")
+                        # Handle continuous key press using get_pressed()
             keys = pygame.key.get_pressed()
 
             if keys[pygame.K_UP]:
