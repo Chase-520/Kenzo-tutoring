@@ -62,10 +62,10 @@ class Game:
                         self.brick.setX(cur_x + 13)  # Example: move 13 pixels right
 
                     if keys[pygame.K_SPACE]:
-                        # Set random velocity for the ball when space is pressed
-                        self.ball.setVx(random.randint(2, 30))
-                        self.ball.setVy(random.randint(2, 30))
-
+                        i = 0
+                        while i < 100:
+                            self.balls.append(Ball(x=400, y=300, radius=random.randint(5, 15), color=(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))))
+                            i += 1
                 elif event.type == pygame.KEYUP:
                     Key = str(pygame.key.name(event.key))
                     print(f"Key {Key} released")

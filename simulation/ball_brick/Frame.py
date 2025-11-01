@@ -43,10 +43,9 @@ class Game:
             keys = pygame.key.get_pressed()
 
             if keys[pygame.K_UP]:
-                # TODO Move brick up
+                self.brick.setY(self.brick.getY() + 20)
                 pass
             if keys[pygame.K_DOWN]:
-                # TODO Move brick down
                 pass
 
             if keys[pygame.K_LEFT]:

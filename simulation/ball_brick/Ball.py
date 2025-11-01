@@ -33,10 +33,10 @@ class Ball:
         self.y += self.vy
 
         # bouncing logic
-        if(___ or ___):
+        if(self.x <= 0 or self.x >= 800):
             self.vx *= -1
 
-        if(___ or ___<0):
+        if(self.y <= 0 or self.y >= 600):
             self.vy = -self.vy
 
 

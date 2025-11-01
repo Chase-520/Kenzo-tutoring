@@ -5,9 +5,9 @@ class Ball:
     def __init__(self, x, y, radius=10, color=(random.randint(0,255), 0, 0)):
         self.x = x
         self.y = y
-        self.vx = random.randint(-50,10)#random.randint(-5, 5)
-        self.vy = random.randint(-50,10)#random.randint(-5, 5)
-        self.gravity = 0.5
+        self.vx = random.randint(-5,5)#random.randint(-5, 5)
+        self.vy = random.randint(-5,5)#random.randint(-5, 5)
+        self.gravity = random.randint(-5,5)
         self.radius = radius
         self.color = color
 
@@ -19,6 +19,19 @@ class Ball:
             self.vx = -self.vx
         if self.y >= 600:
             self.vy = -self.vy
+        if self.x <= 0:
+            self.vx = -self.vx
+        if self.y <= 0:
+            self.vx = -self.vx
+
+        if self.x >= 800:
+            self.x = 800
+        if self.x <= 0:
+            self.x = 0
+        if self.y >= 600:
+            self.y = 600
+        if self.y <= 0:
+            self.y = 50
         self.x = self.x + self.vx
         self.y = self.y + self.vy
 
