@@ -3,8 +3,8 @@ import random
 import time
 
 import pygame.tests
-from stimulation.ball_brick.Ball import Ball
-from stimulation.ball_brick.Brick import Brick
+from simulation.ball_brick.Ball import Ball
+from simulation.ball_brick.Brick import Brick
 
 # Initialize pygame
 pygame.init()
