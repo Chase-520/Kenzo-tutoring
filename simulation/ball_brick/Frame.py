@@ -5,6 +5,8 @@ import time
 import pygame.tests
 from simulation.ball_brick.Ball import Ball
 from simulation.ball_brick.Brick import Brick
+from PIL import Image
+
 
 # Initialize pygame
 pygame.init()
@@ -25,11 +27,21 @@ class Game:
         self.frame_rate = 60
         self.ball = Ball(r=10,x=400,y=300,vx=0,vy=0,color=(255,0,0))  # Create a Ball instance
 
-        self.brick = Brick(xin=50,yin=300,w=30,h=300)
+        self.player1 = Brick(xin=50,yin=300,w=30,h=300)
+        self.player2 = Brick(xin=550,yin=300,w=30,h=300)
 
         self.scoreL = 0
         self.scoreR = 0
 
+        self.background = self.__loadIMG(r"C:\Users\Chaser\Documents\LLLJ_screenshot 2025_10_09 18_06_13.jpg")
+    def __loadIMG(self, path:str):
+        img = Image.open(path)
+        frame = img.convert("RGBA")
+        mode = frame.mode
+        size = frame.size
+        data = frame.tobytes()
+        pyimage= pygame.image.fromstring(data, size, mode)
+        return pyimage
 
     def run(self):
         running = True
@@ -39,6 +51,10 @@ class Game:
             """
             key board interaction
             """
+            # draw background
+            rect = self.background.get_rect(center=display.get_rect().center)
+            display.blit(self.background, rect)
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -56,37 +72,45 @@ class Game:
 
             if keys[pygame.K_UP]:
                 # Move brick up
-                cur_y = self.brick.getY()
-                self.brick.setY(cur_y - 13)
+                cur_y = self.player1.getY()
+                self.player1.setY(cur_y - 13)
 
             if keys[pygame.K_DOWN]:
                 # Move brick down
-                cur_y = self.brick.getY()
-                self.brick.setY(cur_y + 13)
+                cur_y = self.player1.getY()
+                self.player1.setY(cur_y + 13)
 
             if keys[pygame.K_LEFT]:
                 # Move brick left (you can add logic for left movement if needed)
-                cur_x = self.brick.getX()
-                self.brick.setX(cur_x - 13)  # Example: move 13 pixels left
+                cur_x = self.player1.getX()
+                self.player1.setX(cur_x - 13)  # Example: move 13 pixels left
 
             if keys[pygame.K_RIGHT]:
                 # Move brick right (you can add logic for right movement if needed)
-                cur_x = self.brick.getX()
-                self.brick.setX(cur_x + 13)  # Example: move 13 pixels right
+                cur_x = self.player1.getX()
+                self.player1.setX(cur_x + 13)  # Example: move 13 pixels right
 
             if keys[pygame.K_SPACE]:
                 # Set random velocity for the ball when space is pressed
                 self.ball.setVx(random.randint(2, 30))
                 self.ball.setVy(random.randint(2, 30))
+
+            if keys[pygame.K_w]:
+                # when w is pressed
+                cur_y = self.player2.getY()
+                self.player2.setY(cur_y - 13)
+            
+            if keys[pygame.K_s]:
+                # when w is pressed
+                cur_y = self.player2.getY()
+                self.player2.setY(cur_y + 13)
                 
 
-            display.fill((0, 0, 0))  # Clear display with black background
+            self.ball.checkCollision(self.player1)
 
-
-            self.ball.checkCollision(self.brick)
-
-            self.ball.paint(display=display,brick=self.brick)  # Call the paint() method of the ball instance
-            self.brick.paint(display=display)
+            self.ball.paint(display=display,brick=self.player1)  # Call the paint() method of the ball instance
+            self.player1.paint(display=display)
+            self.player2.paint(display=display)
 
             # TODO Score check
             if(self.ball.getX()<10):
@@ -95,8 +119,6 @@ class Game:
                 self.scoreL +=1
 
             # TODO Display score
-            string = f"my score is {self.scoreL}"
-            print(string)
             leftScore = font.render(f"scoreL: {self.scoreL}", True, (255, 255, 255))  # White text
             display.blit(leftScore, (50, 50))  # Draw text at (100, 100)
 
