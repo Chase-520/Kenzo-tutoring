@@ -8,7 +8,7 @@ class Ball:
         self.y :int= y
         self.vx :int= vx  # Change in x direction
         self.vy :int = vy  # Change in y direction
-        self.color :tuple= color # (r,g,b)
+        self.color :tuple= (random.randint(1,255) , random.randint(1,255), random.randint(1,255)) # (r,g,b)
 
     def getRadius(self) ->int:
         return self.radius
@@ -18,6 +18,10 @@ class Ball:
         return self.x
     def setX(self, x:int):
         self.x = x
+    def getY(self) ->int:
+        return self.y
+    def setY(self, y: int):
+        self.y = y
     def getVx(self) ->int:
         return self.vx
     def setVx(self, vx:int):
@@ -41,7 +45,7 @@ class Ball:
 
 
         # Draw ball
-        pygame.draw.circle(display, self.color, (self.x, self.y), self.radius)
+        pygame.draw.circle(display, (random.randint(1,255) , random.randint(1,255), random.randint(1,255)), (self.x, self.y), self.radius)
 
     def checkCollision(self, brick):
         if(self.getX()<brick.getX()+brick.getWidth() and (self.y>brick.getY() and self.y<brick.getY()+brick.getHeight())):

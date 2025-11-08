@@ -24,5 +24,5 @@ class Brick:
         return self.height
     def paint(self, display: pygame.display): # screen is the pygame screen object
         # Draw ball
-        pygame.draw.rect(display, (0, 0, 255), (self.x, self.y, self.width, self.height))
+        pygame.draw.rect(display, (random.randint(1,255) , random.randint(1,255), random.randint(1,255)), (self.x, self.y, self.width, self.height))
 
