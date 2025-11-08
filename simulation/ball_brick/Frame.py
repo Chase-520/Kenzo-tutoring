@@ -35,7 +35,15 @@ class Game:
         self.scoreL = 0
         self.scoreR = 0
 
-
+    def __loadIMG(self, path:str):
+        img = Image.open(path)
+        frame = img.convert("RGBA")
+        mode = frame.mode
+        size = frame.size
+        data = frame.tobytes()
+        pyimage= pygame.image.fromstring(data, size, mode)
+        return pyimage
+    
     def run(self):
         running = True
         clock = pygame.time.Clock()  # Control frame rate
