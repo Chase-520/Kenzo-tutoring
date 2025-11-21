@@ -103,7 +103,25 @@ class GIF:
             transformed.append(img)
         self.frames = transformed
 
-
+    def set_transparency(self, alpha):
+        """Set transparency (alpha) for all frames. Alpha range: 0 (transparent) to 255 (opaque)."""
+        if not self.frames:
+            return
+            
+        alpha = max(0, min(255, alpha))  # Clamp alpha to valid range
+        
+        # Create new frames with updated alpha
+        transparent_frames = []
+        for frame in self.frames:
+            # Create a copy to avoid modifying the original surface
+            transparent_frame = frame.copy()
+            
+            # Set the alpha value for the entire surface
+            transparent_frame.set_alpha(alpha)
+            
+            transparent_frames.append(transparent_frame)
+        
+        self.frames = transparent_frames
 if __name__ == "__main__":
     import sys
     import os
