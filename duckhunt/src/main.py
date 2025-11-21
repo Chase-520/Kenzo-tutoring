@@ -39,8 +39,6 @@ class Game:
                         self.duck.change_state()
                     
             
-
-            
             update_draw(self.screen, self.duck)
             pygame.display.flip()
             
