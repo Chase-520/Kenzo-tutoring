@@ -34,7 +34,7 @@ class Game:
 
         self.scoreL = 0
         self.scoreR = 0
-
+        self.background = self.__loadIMG(filenames)
     def __loadIMG(self, path:str):
         img = Image.open(path)
         frame = img.convert("RGBA")
@@ -107,9 +107,10 @@ class Game:
             if keys[pygame.K_d]:
                 self.brick2.setX(self.brick2.getX() + 20)
                 pass
-                
 
-            display.fill((0, 0, 0))  # Clear display with black background
+            #self.background.get_rect(center=display.get_rect().center)
+            #display.fill((0, 0, 0))  # Clear display with black background
+            display.blit(self.background, self.background.get_rect(center=display.get_rect().center))
 
 
             self.ball.checkCollision(self.brick)
