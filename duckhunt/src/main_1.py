@@ -1,6 +1,7 @@
 import pygame
 import random
 from duck import Duck
+from gifLoader import GIF
 
 WIDTH, HEIGHT = 800, 600
 WHITE = (255, 255, 255)
@@ -17,6 +18,7 @@ def update_draw(screen, obj):
     rect = frame.get_rect(center=(pos[0], pos[1]))
     screen.blit(frame,rect)
 
+
 class Game:
     def __init__(self):
         pygame.init()
@@ -25,11 +27,19 @@ class Game:
         self.clock = pygame.time.Clock()
         self.duck = Duck()
         self.running = True 
+        self.bg = GIF(r"C:\Users\Chaser\Documents\git\Kenzo-tutoring\duckhunt\img\pixelBG.png")
+
 
     def run(self):
         while self.running:
+            
             dt = self.clock.tick(30)
             self.screen.fill(WHITE)
+
+
+            rect = self.bg.get_frame().get_rect(center=self.screen.get_rect().center)
+            self.screen.blit(self.bg.get_frame(),rect)
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
@@ -42,6 +52,7 @@ class Game:
             update_draw(self.screen, self.duck)
             pygame.display.flip()
             
+
 
 if __name__ == "__main__":
     game = Game()

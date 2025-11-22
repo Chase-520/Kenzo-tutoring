@@ -6,7 +6,7 @@ class Duck:
         self.y = random.randint(100,500)
         self.vx = random.randint(0,15)
         self.vy = random.randint(0,15)
-        self.img = GIF(r"C:\Users\chase\Downloads\R.gif",scale=0.3)
+        self.img = GIF(r"C:\Users\Chaser\Documents\git\Kenzo-tutoring\duckhunt\img\Chibi.gif",scale=0.3)
 
         self.actions = ["hit"]
         self.states = ["escape", "die", "disappear"]
@@ -46,12 +46,19 @@ class Duck:
         elif self.current_state == "die":
             # switch to die animation and start timer
             if self.y <=600: # before it hit the ground (y=600)
-                self.vy += 10 # add gravity
+                if self.timer ==0:
+                    self.img = GIF(r"C:\Users\Chaser\Documents\git\Kenzo-tutoring\duckhunt\img\Clap.gif", scale=0.3)
+                    self.vy = -40
+                self.vy += 3 # add gravity
                 self.y +=  self.vy
+                self.timer += 1
             else:
                 self.vx = 0
                 self.vy = 0
-                print("touched the ground")
+                self.timer = 0
+
+                self.img = GIF(r"C:\Users\Chaser\Documents\git\Kenzo-tutoring\duckhunt\img\Chibi.gif",scale=0.3)
+
                 self.current_state = "disappear"
                 self.prev_state = "die"
         elif self.current_state == "disappear":
