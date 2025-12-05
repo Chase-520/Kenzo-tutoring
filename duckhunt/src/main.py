@@ -29,6 +29,12 @@ class Game:
         self.running = True 
         self.bg = GIF(r"duckhunt\img\pixelBG.png")
 
+    def draw_text(self,msg:str,x:int,y:int,size:int,color:tuple=(255,255,255)):
+        # Create a font object
+        font = pygame.font.SysFont(None, size)   # None = default font, 48 = size
+        # Render text to a surface
+        text_surface = font.render(msg, True, color)  # white
+        self.screen.blit(text_surface, (x, y))  # draw text at (x, y)
 
     def run(self):
         while self.running:
@@ -50,6 +56,11 @@ class Game:
                     
             
             update_draw(self.screen, self.duck)
+
+            # update text
+            self.draw_text(msg="Hi, I'm Chase",x=300, y=300, size=48,color=(0,125,255))
+
+            # display everything
             pygame.display.flip()
             
 
