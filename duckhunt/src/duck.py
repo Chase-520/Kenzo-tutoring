@@ -6,7 +6,7 @@ class Duck:
         self.y = random.randint(100,500)
         self.vx = random.randint(0,15)
         self.vy = random.randint(0,15)
-        self.img = GIF(r"duckhunt\img\Chibi.gif",scale=0.3)
+        self.img = GIF(r"C:\Users\kenzo\OneDrive\Documents\GitHub\Kenzo-tutoring\duckhunt\img\Chibi.gif",scale=0.3)
 
         self.actions = ["hit"]
         self.states = ["escape", "die", "disappear"]
@@ -27,7 +27,7 @@ class Duck:
         reached_last_frame = img.reached_last_frame()
 
         return frame, reached_last_frame
-    
+
     def _updateImg(self):
         self.img.update()
         if self.img.reached_last_frame():
@@ -42,16 +42,18 @@ class Duck:
 
         # Different update for different state:
         if self.current_state == "escape":
-            # TODO logic for escape state
+            self.x += self.vx
+            self.y += self.vy
+
         elif self.current_state == "die":
             # switch to die animation and start timer
             if self.y <=600: # before it hit the ground (y=600)
                 if self.timer ==0:
                     # when you first enter the state
-                    pass
+                        self.y = self.y + 25
+
                 # your animaiton logic here
                 pass
-            else:
                 # When the __ expire and you are ready to switch to the next state
 
                 # TODO change state

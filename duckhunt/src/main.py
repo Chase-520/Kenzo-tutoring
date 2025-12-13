@@ -27,7 +27,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.duck = Duck()
         self.running = True 
-        self.bg = GIF(r"duckhunt\img\pixelBG.png")
+        self.bg = GIF(r"C:\Users\kenzo\OneDrive\Documents\GitHub\Kenzo-tutoring\duckhunt\img\pixelBG.png")
 
 
     def run(self):
