@@ -5,7 +5,7 @@ class Duck:
         self.x = random.randint(100,700)
         self.y = random.randint(100,500)
         self.vx = random.randint(0,15)
-        self.vy = random.randint(0,15)
+        self.vy = random.randint(10,20)
         self.img = GIF(r"C:\Users\kenzo\OneDrive\Documents\GitHub\Kenzo-tutoring\duckhunt\img\Chibi.gif",scale=0.3)
 
         self.actions = ["hit"]
@@ -50,13 +50,19 @@ class Duck:
             if self.y <=600: # before it hit the ground (y=600)
                 if self.timer ==0:
                     # when you first enter the state
-                        self.y = self.y + 25
+                    self.vy = -15
+                    self.y += self.vy
+
 
                 # your animaiton logic here
                 pass
+                self.timer += 1
+                self.y += self.vy
+                self.vy += 2
                 # When the __ expire and you are ready to switch to the next state
+            else:
+                self.current_state = "disappear"
 
-                # TODO change state
                 pass
         elif self.current_state == "disappear":
             # start a timer and wait for certain period
@@ -65,7 +71,8 @@ class Duck:
                 self.timer += 1
             else:
                 # TODO change state
-
+                self.img.set_transparency(255)
+                print("asdf")
                 # set transparency to full
 
                 # respawn
