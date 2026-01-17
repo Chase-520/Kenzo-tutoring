@@ -1,6 +1,7 @@
 import pygame
 import random
 from duck import Duck
+from dog import Dog
 from gifLoader import GIF
 
 WIDTH, HEIGHT = 800, 600
@@ -26,6 +27,7 @@ class Game:
         pygame.display.set_caption("Duck Hunt with Dog")
         self.clock = pygame.time.Clock()
         self.duck = Duck()
+        self.dog = Dog()
         self.running = True 
         self.bg = GIF(r"duckhunt\img\pixelBG.png")
 
@@ -53,9 +55,11 @@ class Game:
                     x, y = pygame.mouse.get_pos()
                     if collided([x,y],self.duck):
                         self.duck.update("hit")
+                        self.dog.set_destination([x,y])
                     
             
             update_draw(self.screen, self.duck)
+            update_draw(self.screen, self.dog)
 
             # update text
             self.draw_text(msg="Hi, I'm Chase",x=300, y=300, size=48,color=(0,125,255))
