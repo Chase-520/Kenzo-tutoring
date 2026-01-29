@@ -57,7 +57,8 @@ class Game:
                         self.duck.update("hit")
                         self.dog.set_destination([x,y])
                     
-            
+            if self.duck.current_state == "die":
+                self.dog.set_destination([self.duck.x,self.duck.y])
             update_draw(self.screen, self.duck)
             update_draw(self.screen, self.dog)
 
