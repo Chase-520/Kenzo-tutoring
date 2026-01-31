@@ -72,12 +72,15 @@ class Duck:
             else:
                 # TODO change state
                 self.img.set_transparency(255)
-                print("asdf")
+                print(self.timer)
                 # set transparency to full
 
                 # respawn
-
-
+                self.current_state = "escape"
+                self.prev_state = "disappear"
+                self.x = random.randint(100, 700)
+                self.y = random.randint(100, 500)
+                self.timer = 0
                 # reset timer
                 pass
 

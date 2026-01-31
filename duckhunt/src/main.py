@@ -1,6 +1,7 @@
 import pygame
 import random
 from duck import Duck
+from Dog import Dog
 from gifLoader import GIF
 
 WIDTH, HEIGHT = 800, 600
@@ -26,7 +27,8 @@ class Game:
         pygame.display.set_caption("Duck Hunt with Dog")
         self.clock = pygame.time.Clock()
         self.duck = Duck()
-        self.running = True 
+        self.dog = Dog()
+        self.running = True
         self.bg = GIF(r"C:\Users\kenzo\OneDrive\Documents\GitHub\Kenzo-tutoring\duckhunt\img\pixelBG.png")
 
 
@@ -48,8 +50,9 @@ class Game:
                     if collided([x,y],self.duck):
                         self.duck.update("hit")
                     
-            
+            #Draws on screen
             update_draw(self.screen, self.duck)
+            update_draw(self.screen, self.dog)
             pygame.display.flip()
             
 
