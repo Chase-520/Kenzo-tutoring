@@ -49,7 +49,7 @@ class Game:
                     x, y = pygame.mouse.get_pos()
                     if collided([x,y],self.duck):
                         self.duck.update("hit")
-                    
+                        self.dog.duckposition(self.duck.x,self.duck.y)
             #Draws on screen
             update_draw(self.screen, self.duck)
             update_draw(self.screen, self.dog)
