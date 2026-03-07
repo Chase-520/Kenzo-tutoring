@@ -51,8 +51,12 @@ class Dog:
             self.x += self.vx
 
         elif self.current_state == "fetching":
+            dy = self.ducky - self.y
+            dx = self.duckx - self.x
+            self.vx = min(dx/20,10)
+            self.vy = min(dy / 20, 10)
+            self.x += self.vx
             self.y += self.vy
-
             # # switch to die animation and start timer
             # if self.y <= 600:  # before it hit the ground (y=600)
             #     if self.timer == 0:
