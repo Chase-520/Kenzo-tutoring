@@ -161,6 +161,14 @@ class Board:
         HINT: Use a 'skip' boolean flag to prevent a tile from merging twice.
         Compare tiles[i].value == tiles[i+1].value to detect a merge.
         """
+        new_list = list[None, None, None, None]
+        new_index = 0
+        for tile in row:
+            if tile is not None:
+                pass
+                new_list[new_index] = tile
+                new_index += 1
+
         # TODO: implement this method
         # Placeholder returns the row unchanged so the game is still runnable
         return row[:], False
