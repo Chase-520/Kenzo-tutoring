@@ -89,6 +89,8 @@ class Game:
                - Call self._check_state()    (did the player win or lose?)
         """
         # TODO: implement this method
+        self._board.move(direction)
+        print(direction)
         pass
 
     def _update_animation(self):
