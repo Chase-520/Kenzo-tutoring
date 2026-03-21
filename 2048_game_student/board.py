@@ -141,8 +141,11 @@ class Board:
         """
         # TODO: implement this method
         # Placeholder does nothing — tiles won't move yet
-        r = self._grid[0]
-        self._compress_row(r)
+
+        for i in self._grid:
+            self._compress_row(i)
+            r = self._compress_row(i)
+            print(r[0])
         return False
 
     def _compress_row(self, row: list) -> tuple:
@@ -163,8 +166,7 @@ class Board:
         HINT: Use a 'skip' boolean flag to prevent a tile from merging twice.
         Compare tiles[i].value == tiles[i+1].value to detect a merge.
         """
-        print("current row")
-        print(row)
+
         new_list = [None, None, None, None]
         new_index = 0
         for tile in row:
@@ -172,10 +174,9 @@ class Board:
                 pass
                 new_list[new_index] = tile
                 new_index += 1
-        print("after compress")
-        print(new_list)
         # TODO: implement this method
         # Placeholder returns the row unchanged so the game is still runnable
+        row = new_list
         return row[:], False
 
     # ── Grid rotation helpers ──────────────────────────────
