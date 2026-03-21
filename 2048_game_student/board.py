@@ -142,12 +142,23 @@ class Board:
         # TODO: implement this method
         # Placeholder does nothing — tiles won't move yet
 
-        for i in self._grid:
+        # print before
+        print("Before")
+        self._debug_grid()
+
+        for index,i in enumerate(self._grid):
             self._compress_row(i)
-            r = self._compress_row(i)
-            print(r[0])
+            r,valid = self._compress_row(i)
+            self._grid[index] = r
+            
+        # after compressing
+        print("After")
+        self._debug_grid()
         return False
 
+    def _debug_grid(self):
+        for row in self._grid:
+            print(row)
     def _compress_row(self, row: list) -> tuple:
         """Slide all tiles in one row to the left and merge equal neighbours.
 
