@@ -105,6 +105,11 @@ class Game:
           4. If all_settled is True, set self._animating = False.
         """
         # TODO: implement this method
+        if not self._animating:
+            return False
+        for tile in self._board.tiles:
+            tile.move_towards_target(SLIDE_SPEED)
+            
         pass
 
     def _check_state(self):

@@ -152,6 +152,7 @@ class Board:
             self._grid[index] = r
             
         # after compressing
+        self._update_tile_xy()
         print("After")
         self._debug_grid()
         return False
@@ -159,6 +160,14 @@ class Board:
     def _debug_grid(self):
         for row in self._grid:
             print(row)
+
+    def _update_tile_xy(self):
+        for r,row in enumerate(self._grid):
+            for c,tile in enumerate(row):
+                if tile is not None:
+                    tile.col = c
+                    tile.row = r
+
     def _compress_row(self, row: list) -> tuple:
         """Slide all tiles in one row to the left and merge equal neighbours.
 
@@ -207,4 +216,22 @@ class Board:
         """
         # TODO: implement this method
         # Placeholder does nothing — move() will not work correctly without this
+        for i in range(times):
+            new_grid = []
+            for c in range(len(self._grid[0])):
+                col = []
+                for r in range(len(self._grid)):
+                    col.append(self._grid[r][c])
+                new_grid.insert(0,col)
+            
+            self._debug_grid()
+            print("$####################")
+            for r in new_grid:
+                print(r)
+            
+            self._grid = new_grid
+            
+        self._update_tile_xy()
+           
+                
         pass

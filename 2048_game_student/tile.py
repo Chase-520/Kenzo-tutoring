@@ -119,6 +119,7 @@ class Tile:
         # Text colour: dark on pale tiles, light on saturated tiles
         text_color = COLOR_TEXT_DARK if self.value <= 4 else COLOR_TEXT_LIGHT
 
+        self.x,self.y = self._target_pixel()
         font   = self._get_font(screen)
         text   = font.render(str(self.value), True, text_color)
         text_x = int(self.x) + (TILE_SIZE - text.get_width())  // 2
