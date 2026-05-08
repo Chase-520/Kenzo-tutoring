@@ -79,6 +79,8 @@ class Board:
 
         if moved:
             self._spawn_tile()
+        
+        self._debug_grid()
         return moved
 
     def is_won(self) -> bool:
@@ -143,9 +145,6 @@ class Board:
         # Placeholder does nothing — tiles won't move yet
 
         # print before
-        print("Before")
-        self._debug_grid()
-
         for index,i in enumerate(self._grid):
             self._compress_row(i)
             r,valid = self._compress_row(i)
@@ -153,13 +152,20 @@ class Board:
             
         # after compressing
         self._update_tile_xy()
-        print("After")
-        self._debug_grid()
-        return False
+        # self._debug_grid()
+        return True
 
     def _debug_grid(self):
+        print("---------------------")
         for row in self._grid:
-            print(row)
+            output = ""
+            for t in row:
+                if t is None:
+                    output += "0 "
+                else:
+                    output += str(t.value) + " "
+            print(output)
+        print("---------------------")
 
     def _update_tile_xy(self):
         for r,row in enumerate(self._grid):
@@ -197,7 +203,40 @@ class Board:
         # TODO: implement this method
         # Placeholder returns the row unchanged so the game is still runnable
         row = new_list
-        return row[:], False
+
+        tiles = []
+        for t in row:
+            if t is not None:
+                tiles.append(t)
+        ooo = ""
+        for i in tiles:
+            ooo += str(i.value) + " "
+        print(ooo)
+
+
+        if len(tiles)>=2:
+            fin = []
+        else:
+            fin = tiles
+        i = 0
+        while i < len(tiles) -1:
+            print(f"{tiles[i].value} () {tiles[i + 1].value}")
+            if(tiles[i].value ==tiles[i + 1].value):
+                tiles[i].value = 2*tiles[i].value
+                fin.append(tiles[i])
+                i += 1
+            else:
+                fin.append(tiles[i])
+                fin.append(tiles[i+1])
+                i += 1
+            i += 1
+
+        for i in range(4-len(fin)):
+            fin.append(None)
+        print("FIN")
+        print(fin)
+            
+        return fin[:], False
 
     # ── Grid rotation helpers ──────────────────────────────
 
@@ -224,14 +263,9 @@ class Board:
                     col.append(self._grid[r][c])
                 new_grid.insert(0,col)
             
-            self._debug_grid()
-            print("$####################")
-            for r in new_grid:
-                print(r)
             
             self._grid = new_grid
             
         self._update_tile_xy()
-           
-                
+ 
         pass
