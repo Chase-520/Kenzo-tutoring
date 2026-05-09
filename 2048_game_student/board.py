@@ -126,6 +126,14 @@ class Board:
 
     # ── Slide algorithm (always slides LEFT) ───────────────
 
+    
+    def _update_tile_xy(self):
+        for r,row in enumerate(self._grid):
+            for c,tile in enumerate(row):
+                if tile is not None:
+                    tile.col = c
+                    tile.row = r
+
     def _slide_left(self) -> bool:
         """Compress and merge every row toward the left.
 
@@ -154,6 +162,9 @@ class Board:
         # after compressing
         print("After")
         self._debug_grid()
+
+         # after compressing
+        self._update_tile_xy()
         return False
 
     def _debug_grid(self):
