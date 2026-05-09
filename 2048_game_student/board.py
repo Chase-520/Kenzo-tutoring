@@ -211,30 +211,33 @@ class Board:
         ooo = ""
         for i in tiles:
             ooo += str(i.value) + " "
-        print(ooo)
+        # print(ooo)
 
 
         if len(tiles)>=2:
             fin = []
+            i = 0
+            # print(f"tiles: {tiles}")
+            reached = False
+            while i < len(tiles) and not reached:
+                if(i==len(tiles)-1):
+                    fin.append(tiles[i])
+                    reached = True
+                    continue
+                    
+                if(tiles[i].value ==tiles[i + 1].value):
+                    print(f"{tiles[i].value} () {tiles[i + 1].value}")
+                    tiles[i].value = 2*tiles[i].value
+                    fin.append(tiles[i])
+                    i += 1
+                else:
+                    fin.append(tiles[i])
+                i += 1
         else:
             fin = tiles
-        i = 0
-        while i < len(tiles) -1:
-            print(f"{tiles[i].value} () {tiles[i + 1].value}")
-            if(tiles[i].value ==tiles[i + 1].value):
-                tiles[i].value = 2*tiles[i].value
-                fin.append(tiles[i])
-                i += 1
-            else:
-                fin.append(tiles[i])
-                fin.append(tiles[i+1])
-                i += 1
-            i += 1
 
         for i in range(4-len(fin)):
             fin.append(None)
-        print("FIN")
-        print(fin)
             
         return fin[:], False
 
